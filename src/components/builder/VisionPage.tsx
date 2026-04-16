@@ -12,7 +12,7 @@ export const VisionPage = ({
     { title: "Expansion & Facilities.", content: "In the coming years, REX Soccer aims to open a state-of-the-art training facility, equipped with the latest technology in performance analysis and recovery. We plan to expand our reach across Florida and eventually nationwide." },
     { title: "Pro Pathway.", content: "We are committed to creating direct pathways for our players to reach professional levels, attracting scouts and professional partners who recognize the REX standard of excellence." }
   ],
-  videoUrl = "/make_it_into_202604151235.mp4",
+  videoUrl = "/make_it_rotate_202604161205.mp4",
   backgroundColor = "bg-white",
 }: {
   onBack?: () => void;
@@ -66,14 +66,14 @@ export const VisionPage = ({
 
           <div className="lg:sticky lg:top-40">
             <div 
-              className="relative group cursor-pointer w-full"
+              className="relative group cursor-pointer w-full border border-black/5 rounded-[3rem] p-20"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <video 
                 ref={videoRef}
                 src={videoUrl}
-                className="w-full h-auto block object-contain"
+                className="w-full h-auto block object-contain transition-transform duration-500 group-hover:scale-105"
                 muted
                 loop
                 playsInline
@@ -105,6 +105,6 @@ Builder.registerComponent(VisionPage, {
         { title: "Pro Pathway.", content: "We are committed to creating direct pathways for our players to reach professional levels, attracting scouts and professional partners who recognize the REX standard of excellence." }
       ],
     },
-    { name: 'videoUrl', type: 'string', defaultValue: "/make_it_into_202604151235.mp4" },
+    { name: 'videoUrl', type: 'string', defaultValue: "/make_it_rotate_202604161205.mp4" },
   ],
 });
