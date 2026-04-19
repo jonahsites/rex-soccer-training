@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Share2, MoreHorizontal, Bell, Expand, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Expand, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Builder } from '@builder.io/react';
 
 export const PhotosPage = ({
-  onBack = () => window.dispatchEvent(new CustomEvent('changePage', { detail: 'home' })),
-  title = "Training Gallery",
   photos = [
     { src: "https://lh3.googleusercontent.com/d/10h8ED8NpfOmR3EkAaFE6UStT1UXlwSJV" },
     { src: "https://lh3.googleusercontent.com/d/10xDBaRYG6gIn7mJFgIzyOLcDpNEju-4s" },
@@ -90,68 +88,39 @@ export const PhotosPage = ({
       exit={{ opacity: 0 }}
       className={`min-h-screen ${backgroundColor} flex flex-col`}
     >
-      {/* Top Navigation Bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <button onClick={onBack} className="p-2 hover:bg-black/5 rounded-full transition-colors">
-            <ArrowLeft className="w-6 h-6 text-black/60" />
-          </button>
-          
-          <div className="flex flex-col items-center">
-            <h1 className="text-lg font-bold text-black tracking-tight">{title}</h1>
-            <div className="flex items-center gap-2 text-[10px] font-medium text-black/40 uppercase tracking-widest mt-0.5">
-              <span>April 16, 2026</span>
-              <span className="w-1 h-1 rounded-full bg-black/10" />
-              <span>{photos.length} Photos</span>
-              <span className="w-1 h-1 rounded-full bg-black/10" />
-              <div className="flex items-center gap-1.5">
-                <div className="w-4 h-4 rounded-full bg-ice-blue/20 flex items-center justify-center overflow-hidden">
-                  <img src="https://lh3.googleusercontent.com/d/1_orANRBtQ3NfIo1pz7XDM6MO_RpVLJmX" className="w-full h-full object-cover" />
-                </div>
-                <span className="text-black/60">Coach Raza</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button className="px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-black/40 hover:text-black transition-colors">Share</button>
-            <div className="flex items-center gap-1">
-              <button className="p-2 hover:bg-black/5 rounded-full transition-colors"><MoreHorizontal className="w-5 h-5 text-black/40" /></button>
-              <button className="p-2 hover:bg-black/5 rounded-full transition-colors"><Bell className="w-5 h-5 text-black/40" /></button>
-              <div className="w-8 h-8 rounded-full bg-black/5 ml-2 overflow-hidden border border-black/10">
-                <img src="https://lh3.googleusercontent.com/d/1_orANRBtQ3NfIo1pz7XDM6MO_RpVLJmX" className="w-full h-full object-cover" />
-              </div>
-            </div>
-          </div>
+      <div className="max-w-7xl mx-auto w-full pt-20 pb-20 px-4 md:px-8">
+        <div className="mb-10 pl-2">
+          <h1 className="text-4xl font-bold text-black tracking-tight">Photos</h1>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto w-full pt-32 pb-20 px-4 md:px-6">
-        {/* Mosaic Grid Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-1 md:gap-2">
-          {photos.map((photo, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: (i % 12) * 0.05 }}
-              className={`${getGridSpan(i)} relative group cursor-pointer overflow-hidden bg-black/5`}
-              onClick={() => setSelectedPhoto(i)}
-            >
-              <img 
-                src={photo.src} 
-                alt={`Soccer ${i}`} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                referrerPolicy="no-referrer" 
-              />
-              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center">
-                  <Expand className="w-4 h-4 text-white" />
+        {/* Gallery Container - Styled like a "Screen" or "Card" */}
+        <div className="bg-white rounded-[2rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 overflow-hidden">
+          {/* Mosaic Grid Layout */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-[200px] lg:auto-rows-[280px] gap-1 p-1">
+            {photos.map((photo, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.98 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: (i % 8) * 0.05 }}
+                className={`${getGridSpan(i)} relative group cursor-pointer overflow-hidden bg-black/5`}
+                onClick={() => setSelectedPhoto(i)}
+              >
+                <img 
+                  src={photo.src} 
+                  alt={`Soccer ${i}`} 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                  referrerPolicy="no-referrer" 
+                />
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center scale-90 group-hover:scale-100 transition-transform">
+                    <Expand className="w-5 h-5 text-white" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -226,7 +195,6 @@ Builder.registerComponent(PhotosPage, {
   name: 'PhotosPage',
   inputs: [
     { name: 'backgroundColor', type: 'string', defaultValue: 'bg-white' },
-    { name: 'title', type: 'string', defaultValue: "Training Gallery" },
     { 
       name: 'photos', 
       type: 'list', 
