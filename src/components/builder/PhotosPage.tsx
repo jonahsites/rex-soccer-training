@@ -65,22 +65,6 @@ export const PhotosPage = ({
 }) => {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
 
-  // Helper to get grid spans for a mosaic look
-  const getGridSpan = (index: number) => {
-    const pattern = [
-      "row-span-2 col-span-1", // Tall
-      "col-span-1 row-span-1", // Square
-      "col-span-1 row-span-1", // Square
-      "col-span-1 row-span-2", // Tall
-      "col-span-2 row-span-1", // Wide
-      "col-span-1 row-span-1", // Square
-      "col-span-1 row-span-1", // Square
-      "col-span-1 row-span-1", // Square
-      "col-span-2 row-span-2", // Large Square
-    ];
-    return pattern[index % pattern.length];
-  };
-
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -88,34 +72,34 @@ export const PhotosPage = ({
       exit={{ opacity: 0 }}
       className={`min-h-screen ${backgroundColor} flex flex-col`}
     >
-      <div className="max-w-7xl mx-auto w-full pt-20 pb-20 px-4 md:px-8">
-        <div className="mb-10 pl-2">
-          <h1 className="text-4xl font-bold text-black tracking-tight">Photos</h1>
+      <div className="max-w-[1600px] mx-auto w-full pt-16 pb-20 px-1 md:px-2">
+        <div className="mb-12 pl-4 md:pl-6">
+          <h1 className="text-5xl font-bold text-black tracking-tighter">Photos</h1>
+          <p className="text-black/40 text-sm mt-2 font-medium">Capture the moment, one frame at a time.</p>
         </div>
 
-        {/* Gallery Container - Styled like a "Screen" or "Card" */}
-        <div className="bg-white rounded-[2rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 overflow-hidden">
-          {/* Mosaic Grid Layout */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-[200px] lg:auto-rows-[280px] gap-1 p-1">
+        {/* Gallery Container - Masonry Layout (Edge to Edge) */}
+        <div className="w-full">
+          <div className="columns-2 md:columns-3 lg:columns-4 gap-1 md:gap-2">
             {photos.map((photo, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: (i % 8) * 0.05 }}
-                className={`${getGridSpan(i)} relative group cursor-pointer overflow-hidden bg-black/5`}
+                transition={{ delay: (i % 6) * 0.05 }}
+                className="relative group cursor-pointer overflow-hidden rounded-sm md:rounded-md mb-1 md:mb-2 break-inside-avoid shadow-sm"
                 onClick={() => setSelectedPhoto(i)}
               >
                 <img 
                   src={photo.src} 
                   alt={`Soccer ${i}`} 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                  className="w-full h-auto block transition-transform duration-700 group-hover:scale-105" 
                   referrerPolicy="no-referrer" 
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[2px] flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center scale-90 group-hover:scale-100 transition-transform">
-                    <Expand className="w-5 h-5 text-white" />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[1px] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center scale-90 group-hover:scale-100 transition-transform">
+                    <Expand className="w-4 h-4 text-white" />
                   </div>
                 </div>
               </motion.div>
