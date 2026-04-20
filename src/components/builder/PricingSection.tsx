@@ -12,7 +12,7 @@ export const PricingSection = ({
   plans = [
     {
       name: "Private",
-      price: "60",
+      price: "55",
       features: ["1-on-1 Attention", "Customized Drills", "Performance Analysis", "Flexible Scheduling"],
       popular: false
     },
