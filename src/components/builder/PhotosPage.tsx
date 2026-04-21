@@ -55,6 +55,11 @@ export const PhotosPage = ({
     { src: "https://lh3.googleusercontent.com/d/1riHjYUBY5QHiJDJFHjS3o2jq2713qaI0" },
     { src: "https://lh3.googleusercontent.com/d/1tSTxsaiXvkcP1fimAiHS22i_UtjLnAZZ" },
     { src: "https://lh3.googleusercontent.com/d/1tTyY4epvBnCpWxH_Cu8cIDsUaZA61Vei" },
+    { src: "https://lh3.googleusercontent.com/d/14XY6i4m_3xmJfXhNCu5OUpdThJ09JovO" },
+    { src: "https://lh3.googleusercontent.com/d/1pARlQvj_QJPGSwd7rqCvqxlMA2GpmVki" },
+    { src: "https://lh3.googleusercontent.com/d/1S0ZKybOh7P6Uzy2fCW_qm31MlXdxcxnj" },
+    { src: "https://lh3.googleusercontent.com/d/1QOS0ppf0Q4ilLz8KnOrdEpf0lhe6N166" },
+    { src: "https://lh3.googleusercontent.com/d/17TVpULAOzmZLkEa3MCiKW4Mk1g7Wrur_" },
   ],
   backgroundColor = "bg-white",
 }: {
@@ -236,6 +241,11 @@ Builder.registerComponent(PhotosPage, {
         { src: "https://lh3.googleusercontent.com/d/1riHjYUBY5QHiJDJFHjS3o2jq2713qaI0" },
         { src: "https://lh3.googleusercontent.com/d/1tSTxsaiXvkcP1fimAiHS22i_UtjLnAZZ" },
         { src: "https://lh3.googleusercontent.com/d/1tTyY4epvBnCpWxH_Cu8cIDsUaZA61Vei" },
+        { src: "https://lh3.googleusercontent.com/d/14XY6i4m_3xmJfXhNCu5OUpdThJ09JovO" },
+        { src: "https://lh3.googleusercontent.com/d/1pARlQvj_QJPGSwd7rqCvqxlMA2GpmVki" },
+        { src: "https://lh3.googleusercontent.com/d/1S0ZKybOh7P6Uzy2fCW_qm31MlXdxcxnj" },
+        { src: "https://lh3.googleusercontent.com/d/1QOS0ppf0Q4ilLz8KnOrdEpf0lhe6N166" },
+        { src: "https://lh3.googleusercontent.com/d/17TVpULAOzmZLkEa3MCiKW4Mk1g7Wrur_" },
       ]
     },
   ],
